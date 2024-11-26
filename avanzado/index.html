@@ -33,9 +33,7 @@
 
         /* Lista de enlaces */
         .links-container {
-            overflow-y: auto;
-            max-height: 400px;
-            margin: 0 auto;
+            margin: 20px auto;
             width: 90%;
             max-width: 400px;
         }
@@ -72,22 +70,22 @@
             margin: 20px 0;
         }
 
-        .pagination button {
+        .pagination a {
             background-color: #007bff;
             color: white;
-            border: none;
+            text-decoration: none;
             padding: 10px 15px;
             margin: 0 5px;
             border-radius: 5px;
-            cursor: pointer;
+            font-weight: bold;
             transition: background-color 0.3s ease;
         }
 
-        .pagination button:hover {
+        .pagination a:hover {
             background-color: #0056b3;
         }
 
-        .pagination button:disabled {
+        .pagination a.disabled {
             background-color: #cccccc;
             cursor: not-allowed;
         }
@@ -109,78 +107,40 @@
         <a href="index.html">Inicio</a> &gt; Lista de Enlaces
     </div>
 
-    <!-- Contenedor para los enlaces -->
+    <!-- Bloques de enlaces -->
     <div class="links-container">
-        <ul id="link-list">
-            <!-- Los enlaces se cargarán dinámicamente aquí -->
-        </ul>
+        <!-- Página 1 -->
+        <div id="page-1">
+            <h2>Página 1</h2>
+            <ul>
+                <li><a href="ejemplo_1_1.html">Ejemplo 1</a></li>
+                <li><a href="ejemplo_1_2.html">Ejemplo 2</a></li>
+                <li><a href="ejemplo_1_3.html">Ejemplo 3</a></li>
+                <li><a href="ejemplo_1_4.html">Ejemplo 4</a></li>
+                <li><a href="ejemplo_1_5.html">Ejemplo 5</a></li>
+                <li><a href="ejemplo_1_6.html">Ejemplo 6</a></li>
+                <li><a href="ejemplo_1_7.html">Ejemplo 7</a></li>
+                <li><a href="ejemplo_1_8.html">Ejemplo 8</a></li>
+                <li><a href="ejemplo_1_9.html">Ejemplo 9</a></li>
+                <li><a href="ejemplo_1_10.html">Ejemplo 10</a></li>
+                <li><a href="ejemplo_1_11.html">Ejemplo 11</a></li>
+                <li><a href="ejemplo_1_12.html">Ejemplo 12</a></li>
+                <li><a href="ejemplo_1_13.html">Ejemplo 13</a></li>
+                <li><a href="ejemplo_1_14.html">Ejemplo 14</a></li>
+                <li><a href="ejemplo_1_15.html">Ejemplo 15</a></li>
+                <li><a href="ejemplo_1_16.html">Ejemplo 16</a></li>
+                <li><a href="ejemplo_1_17.html">Ejemplo 17</a></li>
+                <li><a href="ejemplo_1_18.html">Ejemplo 18</a></li>
+                <li><a href="ejemplo_1_19.html">Ejemplo 19</a></li>
+                <li><a href="ejemplo_1_20.html">Ejemplo 20</a></li>
+                <li><a href="ejemplo_1_21.html">Ejemplo 21</a></li>
+                <li><a href="ejemplo_1_22.html">Ejemplo 22</a></li>
+                <li><a href="ejemplo_1_23.html">Ejemplo 23</a></li>
+                <li><a href="ejemplo_1_24.html">Ejemplo 24</a></li>
+
+            </ul>
+        </div>
     </div>
-
-    <!-- Controles de paginación -->
-    <div class="pagination">
-        <button id="prev" disabled>&laquo; Anterior</button>
-        <button id="next">Siguiente &raquo;</button>
-    </div>
-
-    <script>
-        // Lista completa de enlaces
-        const links = [
-            "ejemplo_1_1.html", "ejemplo_1_2.html","ejemplo_1_3.html", "ejemplo_1_4.html", "ejemplo_1_5.html", "ejemplo_1_6.html", "ejemplo_1_7.html",
-            "ejemplo_1_8.html", "ejemplo_1_9.html", "ejemplo_1_10.html", "ejemplo_1_11.html", "ejemplo_1_12.html",
-            "ejemplo_1_13.html", "ejemplo_1_14.html", "ejemplo_1_15.html", "ejemplo_1_16.html", "ejemplo_1_17.html",
-            "ejemplo_1_18.html", "ejemplo_1_19.html", "ejemplo_1_20.html", "ejemplo_1_21.html", "ejemplo_1_22.html",
-            "ejemplo_1_23.html", "ejemplo_1_24.html"
-        ];
-
-        const linksPerPage = 5; // Número de enlaces por página
-        let currentPage = 1; // Página actual
-
-        const linkList = document.getElementById("link-list");
-        const prevButton = document.getElementById("prev");
-        const nextButton = document.getElementById("next");
-
-        // Función para mostrar enlaces en una página específica
-        function displayLinks(page) {
-            // Limpiar la lista
-            linkList.innerHTML = "";
-
-            // Calcular los índices de los enlaces a mostrar
-            const startIndex = (page - 1) * linksPerPage;
-            const endIndex = page * linksPerPage;
-
-            // Crear elementos de lista para los enlaces visibles
-            links.slice(startIndex, endIndex).forEach(link => {
-                const li = document.createElement("li");
-                const a = document.createElement("a");
-                a.href = link;
-                a.textContent = link;
-                li.appendChild(a);
-                linkList.appendChild(li);
-            });
-
-            // Actualizar los botones de paginación
-            prevButton.disabled = page === 1;
-            nextButton.disabled = page === Math.ceil(links.length / linksPerPage);
-        }
-
-        // Event listeners para los botones
-        prevButton.addEventListener("click", () => {
-            if (currentPage > 1) {
-                currentPage--;
-                displayLinks(currentPage);
-            }
-        });
-
-        nextButton.addEventListener("click", () => {
-            if (currentPage < Math.ceil(links.length / linksPerPage)) {
-                currentPage++;
-                displayLinks(currentPage);
-            }
-        });
-
-        // Mostrar la primera página al cargar
-        displayLinks(currentPage);
-    </script>
 </body>
 
 </html>
