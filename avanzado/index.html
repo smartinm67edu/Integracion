@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Enlaces</title>
     <style>
+        /* General Styles */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
-            margin: 20px;
+            margin: 0;
+            padding: 20px;
         }
 
         h1 {
@@ -17,11 +19,31 @@
             color: #333;
         }
 
+        .breadcrumb {
+            margin: 10px 0;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .breadcrumb a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        /* Lista de enlaces */
+        .links-container {
+            overflow-y: auto;
+            max-height: 400px;
+            margin: 0 auto;
+            width: 90%;
+            max-width: 400px;
+        }
+
         ul {
             list-style-type: none;
             padding: 0;
-            max-width: 400px;
-            margin: 0 auto;
+            margin: 0;
         }
 
         li {
@@ -42,56 +64,123 @@
         li:hover {
             background-color: #b3e0f7;
         }
+
+        /* Botones de paginación */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .pagination button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .pagination button:hover {
+            background-color: #0056b3;
+        }
+
+        .pagination button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .links-container {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 
 <body>
     <h1>Lista de Enlaces</h1>
-    <ul>
-        <!-- Lista dinámica -->
-        <li><a href="ejemplo1.html">Ejemplo 1</a></li>
-        <li><a href="ejemplo2.html">Ejemplo 2</a></li>
-        <li><a href="ejemplo3.html">Ejemplo 3</a></li>
-        <li><a href="ejemplo4.html">Ejemplo 4</a></li>
-        <li><a href="ejemplo5.html">Ejemplo 5</a></li>
-        <li><a href="ejemplo6.html">Ejemplo 6</a></li>
-        <li><a href="ejemplo7.html">Ejemplo 7</a></li>
-        <li><a href="ejemplo8.html">Ejemplo 8</a></li>
-        <li><a href="ejemplo9.html">Ejemplo 9</a></li>
-        <li><a href="ejemplo10.html">Ejemplo 10</a></li>
-        <li><a href="ejemplo11.html">Ejemplo 11</a></li>
-        <li><a href="ejemplo12.html">Ejemplo 12</a></li>
-        <li><a href="ejemplo13.html">Ejemplo 13</a></li>
-        <li><a href="ejemplo14.html">Ejemplo 14</a></li>
-        <li><a href="ejemplo15.html">Ejemplo 15</a></li>
-        <li><a href="ejemplo16.html">Ejemplo 16</a></li>
-        <li><a href="ejemplo17.html">Ejemplo 17</a></li>
-        <li><a href="ejemplo18.html">Ejemplo 18</a></li>
-        <li><a href="ejemplo_1_1.html">Ejemplo 1_1</a></li>
-        <li><a href="ejemplo_1_2.html">Ejemplo 1_2</a></li>
-        <li><a href="ejemplo_1_3.html">Ejemplo 1_3</a></li>
-        <li><a href="ejemplo_1_4.html">Ejemplo 1_4</a></li>
-        <li><a href="ejemplo_1_5.html">Ejemplo 1_5</a></li>
-        <li><a href="ejemplo_1_6.html">Ejemplo 1_6</a></li>
-        <li><a href="ejemplo_1_7.html">Ejemplo 1_7</a></li>
-        <li><a href="ejemplo_1_8.html">Ejemplo 1_8</a></li>
-        <li><a href="ejemplo_1_9.html">Ejemplo 1_9</a></li>
-        <li><a href="ejemplo_1_10.html">Ejemplo 1_10</a></li>
-        <li><a href="ejemplo_1_11.html">Ejemplo 1_11</a></li>
-        <li><a href="ejemplo_1_12.html">Ejemplo 1_12</a></li>
-        <li><a href="ejemplo_1_13.html">Ejemplo 1_13</a></li>
-        <li><a href="ejemplo_1_14.html">Ejemplo 1_14</a></li>
-        <li><a href="ejemplo_1_15.html">Ejemplo 1_15</a></li>
-        <li><a href="ejemplo_1_16.html">Ejemplo 1_16</a></li>
-        <li><a href="ejemplo_1_17.html">Ejemplo 1_17</a></li>
-        <li><a href="ejemplo_1_18.html">Ejemplo 1_18</a></li>
-        <li><a href="ejemplo_1_19.html">Ejemplo 1_19</a></li>
-        <li><a href="ejemplo_1_20.html">Ejemplo 1_20</a></li>
-        <li><a href="ejemplo_1_21.html">Ejemplo 1_21</a></li>
-        <li><a href="ejemplo_1_22.html">Ejemplo 1_22</a></li>
-        <li><a href="ejemplo_1_23.html">Ejemplo 1_23</a></li>
-        <li><a href="ejemplo_1_24.html">Ejemplo 1_24</a></li>
-    </ul>
+
+    <!-- Migas de pan -->
+    <div class="breadcrumb">
+        <a href="index.html">Inicio</a> &gt; Lista de Enlaces
+    </div>
+
+    <!-- Contenedor para los enlaces -->
+    <div class="links-container">
+        <ul id="link-list">
+            <!-- Los enlaces se cargarán dinámicamente aquí -->
+        </ul>
+    </div>
+
+    <!-- Controles de paginación -->
+    <div class="pagination">
+        <button id="prev" disabled>&laquo; Anterior</button>
+        <button id="next">Siguiente &raquo;</button>
+    </div>
+
+    <script>
+        // Lista completa de enlaces
+        const links = [
+            "ejemplo_1_1.html", "ejemplo_1_2.html","ejemplo_1_3.html", "ejemplo_1_4.html", "ejemplo_1_5.html", "ejemplo_1_6.html", "ejemplo_1_7.html",
+            "ejemplo_1_8.html", "ejemplo_1_9.html", "ejemplo_1_10.html", "ejemplo_1_11.html", "ejemplo_1_12.html",
+            "ejemplo_1_13.html", "ejemplo_1_14.html", "ejemplo_1_15.html", "ejemplo_1_16.html", "ejemplo_1_17.html",
+            "ejemplo_1_18.html", "ejemplo_1_19.html", "ejemplo_1_20.html", "ejemplo_1_21.html", "ejemplo_1_22.html",
+            "ejemplo_1_23.html", "ejemplo_1_24.html"
+        ];
+
+        const linksPerPage = 5; // Número de enlaces por página
+        let currentPage = 1; // Página actual
+
+        const linkList = document.getElementById("link-list");
+        const prevButton = document.getElementById("prev");
+        const nextButton = document.getElementById("next");
+
+        // Función para mostrar enlaces en una página específica
+        function displayLinks(page) {
+            // Limpiar la lista
+            linkList.innerHTML = "";
+
+            // Calcular los índices de los enlaces a mostrar
+            const startIndex = (page - 1) * linksPerPage;
+            const endIndex = page * linksPerPage;
+
+            // Crear elementos de lista para los enlaces visibles
+            links.slice(startIndex, endIndex).forEach(link => {
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                a.href = link;
+                a.textContent = link;
+                li.appendChild(a);
+                linkList.appendChild(li);
+            });
+
+            // Actualizar los botones de paginación
+            prevButton.disabled = page === 1;
+            nextButton.disabled = page === Math.ceil(links.length / linksPerPage);
+        }
+
+        // Event listeners para los botones
+        prevButton.addEventListener("click", () => {
+            if (currentPage > 1) {
+                currentPage--;
+                displayLinks(currentPage);
+            }
+        });
+
+        nextButton.addEventListener("click", () => {
+            if (currentPage < Math.ceil(links.length / linksPerPage)) {
+                currentPage++;
+                displayLinks(currentPage);
+            }
+        });
+
+        // Mostrar la primera página al cargar
+        displayLinks(currentPage);
+    </script>
 </body>
 
 </html>

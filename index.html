@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html">Inicio</a>
+        <a href="./intermedio/index.html">Intermedio</a>
+        <a href="./avanzado/index.html">Avanzado</a>
+    </nav>
+
+    <!-- Contenedor Principal -->
+    <div class="contenedor">
+        <!-- Migas de Pan -->
+        <div class="breadcrumb">
+            <a href="index.html">Inicio</a> &gt; 
+            <span>Página Principal</span>
+        </div>
+
+        <!-- Diseño de Cajas -->
+        <div class="caja">
+            <h2>Controlar el Overflow</h2>
+            <p>
+                Este es un ejemplo de contenido con overflow. Si este texto es muy largo, aparecerá una barra de desplazamiento.
+            </p>
+            <div class="overflow-box">
+                <p>
+                    Contenido adicional para demostrar el control del overflow. Puedes hacer que este contenedor sea tan alto como desees, pero estará limitado por su configuración CSS.
+                </p>
+            </div>
+        </div>
+
+        <div class="caja">
+            <h2>Paginado</h2>
+            <div class="pagination">
+                <a href="#">&laquo;</a>
+                <a href="#">1</a>
+                <a href="#" class="active">2</a>
+                <a href="#">3</a>
+                <a href="#">&raquo;</a>
+            </div>
+        </div>
+
+        <!-- Botones -->
+        <div class="caja">
+            <h2>Botones</h2>
+            <button>Botón Principal</button>
+            <button class="tooltip" data-tooltip="Tooltip en este botón">Botón con Tooltip</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Mi Sitio Web. Todos los derechos reservados. | Transición de color en el menú y diseño responsive.</p>
+    </footer>
+</body>
+</html>
